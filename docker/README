@@ -56,6 +56,7 @@ CONTAINER ID         IMAGE                COMMAND               STATUS        NA
 
 [root@www.schat.top:~ ]#  vim /usr/local/bin/dockerin 
 #!/bin/bash
+# Switch docker containers as select menu
 # Auther: schat <https://www.schat.top>
 
 cat > /tmp/dockergetip <<'_EOF_'
