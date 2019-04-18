@@ -7,7 +7,7 @@ Stranger and Anonymous chat web and app, Suport Text / Picuter / Audio / Video
 
 <img src="http://www.schat.top/icons/show/1.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/2.png?id=2" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/22.png" width="50%" height="50%" />
 
 <img src="http://www.schat.top/icons/show/3.png" width="50%" height="50%" />
 
