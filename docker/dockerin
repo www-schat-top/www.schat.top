@@ -1,4 +1,4 @@
-[root@www.schat.top:~ ]#  vim /usr/local/bin/dockerin 
+[root@schat.top:~ ]#  vim /usr/local/bin/dockerin 
 #!/bin/bash
 # Switch docker containers as select menu
 # Auther: schat <https://www.schat.top>
@@ -23,15 +23,15 @@ done
 
 ................................................................
 
-[root@www.schat.top:~ ]#  chmod +x /usr/local/bin/dockerin
+[root@schat.top:~ ]#  chmod +x /usr/local/bin/dockerin
 
 ................................................................
 
-[root@www.schat.top:~ ]#  dockerin
+[root@schat.top:~ ]#  dockerin
 1) www.schat.top(172.18.0.100)  3) php(172.18.0.11)
 2) mysql(172.18.0.20)
 
 #? 1
 
-[root@www.schat.top:~ ]#  /etc/init.d/cron status
+[root@schat.top:~ ]#  /etc/init.d/cron status
    * cron is running
