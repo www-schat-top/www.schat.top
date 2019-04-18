@@ -47,6 +47,10 @@
 [user@schat.top:~ ]$ npm update --unsafe-perm=true --allow-root 
 
 5)
+[user@schat.top:~ ]$ crontab -l
+* * * * * /usr/bin/nc -n -zv 127.0.0.1 4200 || sudo /data/schat.top/tools/chat.sh start
+
+6)
  [root@schat.top:~ ]$ vim ~/.bashrc
  export COLUMNS=118
  export LINES=26
