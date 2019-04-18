@@ -9,13 +9,13 @@ Stranger and Anonymous chat web and app, Suport Text / Picuter / Audio / Video
 
 <img src="http://www.schat.top/icons/show/22.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/3.png" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/33.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/4.png" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/44.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/5.png" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/55.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/6.png" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/66.png" width="50%" height="50%" />
 
-<img src="http://www.schat.top/icons/show/7.png" width="50%" height="50%" />
+<img src="http://www.schat.top/icons/show/77.png" width="50%" height="50%" />
 
