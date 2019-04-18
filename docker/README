@@ -14,6 +14,16 @@
 
 [root@schat.top:~ ]# docker network create --subnet 172.18.0.0/24 dockernet
 
+[root@schat.top:~ ]# mkdir -p /data/docker
+
+[root@schat.top:~ ]# /etc/init.d/docker stop
+[root@schat.top:~ ]# mv /var/lib/docker /data/docker/lib
+[root@schat.top:~ ]# mount --rbind /data/docker/lib  /var/lib/docker
+[root@schat.top:~ ]# /etc/init.d/docker start
+
+[root@schat.top:~ ]# vim /etc/fstab
+/data/dockerlib /var/lib/docker ext4  defaults,rbind 0 0
+
 ....................................................................
 ....................................................................
 
