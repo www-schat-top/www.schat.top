@@ -1,1 +1,73 @@
 
+
+1)Create Server
+[root@schat.top:~ ]# mkdir -p /data/docker/schat.top/
+[root@schat.top:~ ]# vim /data/docker/schat.top/init.sh
+[ -f /data/schat.top/tools/chat.sh ] && /data/schat.top/tools/chat.sh start
+  
+[root@schat.top:~ ]# docker run -it -d --ip=172.18.0.100 --net=dockernet -v /data/docker/schat.top:/data -w /data -h schat --name schat --restart=always myubuntu:19.04 /bin/bash
+
+2)Update
+[root@schat.top:~ ]# useradd -s /bin/bash -d /home/user user
+[root@schat.top:~ ]# mkdir /home/user
+[root@schat.top:~ ]# chown -R user:user /home/user
+[root@schat.top:~ ]# echo 'user    ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+[root@schat.top:~ ]# su - user 
+[user@schat.top:~ ]# sudo apt -y update 
+[user@schat.top:~ ]# sudo apt -y upgrade 
+[user@schat.top:~ ]# sudo apt -y install --fix-missing make gcc g++ python net-tools wget vim git sqlite3 xz-utils cron
+[user@schat.top:~ ]# sudo apt -y install --fix-missing imagemagick pngquant jpegoptim ffmpeg imagemagick webp
+#must use sudo or will be error 
+[user@schat.top:~ ]# sudo apt -y install --fix-missing libmagickcore-dev libmagickwand-dev libmagic-dev
+
+3)
+ [user@schat.top:~ ]$ cd /data 
+
+ [user@schat.top:~ ]$ mkdir /data/schat.top
+
+ [user@schat.top:~ ]$ sudo ln -s /data/node10.11.0/bin/node /usr/local/bin/node
+ [user@schat.top:~ ]$ sudo ln -s /data/node10.11.0/bin/node /usr/local/bin/nodejs
+ 
+ [user@schat.top:~ ]$ sudo vim /etc/profile
+ export NODE_PATH=$NODE_PATH:/data/node10.11.0/lib/node_modules:/data/schat.top/node_modules
+ 
+ [user@schat.top:~ ]$ . /etc/profile
+
+4)
+[user@schat.top:~ ]$ cd /data/schat.top
+[user@schat.top:~ ]$ npm init
+
+[user@schat.top:~ ]$ npm install socket.io cors md5 http unirest express mime-types imagemagick fluent-ffmpeg
+[user@schat.top:~ ]$ npm install body-parser querystring connect-busboy child_process
+[user@schat.top:~ ]$ npm install ip binary-search glob fs printf path child_process compression
+[user@schat.top:~ ]$ npm install html-minifier -g
+[user@schat.top:~ ]$ npm install html-minifier
+[user@schat.top:~ ]$ npm install --unsafe-perm=true --allow-root --save gyp node-gyp better-sqlite3  sharp
+
+.update
+[user@schat.top:~ ]$ npm update --unsafe-perm=true --allow-root 
+
+5)
+ [root@schat.top:~ ]$ vim ~/.bashrc
+ export COLUMNS=118
+ export LINES=26
+ tput cols
+ reset -w
+
+ ///////////////////////////////////////////////////////////
+
+a)图片优化
+ [user@schat.top:~ ]$ convert -resize '110>' iu1538867774703.jpg output.jpg
+ [user@schat.top:~ ]$ identify a.jpg
+            a.jpg JPEG 110x196 110x196+0+0 8-bit sRGB 3.77KB 0.000u 0:00.000
+
+ [user@schat.top:~ ]$ pngquant --quality 50-70 iu1538882606074.png --output a.png
+ [user@schat.top:~ ]$ identify a.png
+
+b) HTML语法优化
+ [user@schat.top:~ ]$  html-minifier index.html > aa.html
+
+c) HTML压缩
+ [user@schat.top:~ ]$ npm -g i html-minify
+ [user@schat.top:~ ]$ /data/node10.11.0/bin/htmlminify index.nc.html > index.htmlroot@schat2019:/data/schat.top/ziliao
