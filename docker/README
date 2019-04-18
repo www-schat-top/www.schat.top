@@ -1,15 +1,18 @@
+.Author: schat <https://www.schat.top>
+....................................................................
+
 .install docker
 ....................................................................
-[root@www.schat.top:~ ]# apt-get -y update
-[root@www.schat.top:~ ]# apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual 
-[root@www.schat.top:~ ]# apt-get -y install apt-transport-https ca-certificates curl software-properties-common
-[root@www.schat.top:~ ]# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-[root@www.schat.top:~ ]# apt-key fingerprint 0EBFCD88
-[root@www.schat.top:~ ]# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
-[root@www.schat.top:~ ]# apt-get -y update
-[root@www.schat.top:~ ]# apt-get -y install docker-ce  --allow-unauthenticated
+[root@schat.top:~ ]# apt-get -y update
+[root@schat.top:~ ]# apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual 
+[root@schat.top:~ ]# apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+[root@schat.top:~ ]# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+[root@schat.top:~ ]# apt-key fingerprint 0EBFCD88
+[root@schat.top:~ ]# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
+[root@schat.top:~ ]# apt-get -y update
+[root@schat.top:~ ]# apt-get -y install docker-ce  --allow-unauthenticated
 
-[root@www.schat.top:~ ]# docker network create --subnet 172.18.0.0/24 dockernet
+[root@schat.top:~ ]# docker network create --subnet 172.18.0.0/24 dockernet
 
 ....................................................................
 ....................................................................
@@ -17,10 +20,10 @@
 .Build my dockerfile and let docker run services cron and init.sh at startup
 ....................................................................
 
-[root@www.schat.top:~ ]# mkdir -p /data/docker/images/myubuntu19.04
-[root@www.schat.top:~ ]# cd /data/docker/images/myubuntu19.04
+[root@schat.top:~ ]# mkdir -p /data/docker/images/myubuntu19.04
+[root@schat.top:~ ]# cd /data/docker/images/myubuntu19.04
 
-[root@www.schat.top:~ ]# vim Dockerfile
+[root@schat.top:~ ]# vim Dockerfile
 FROM ubuntu:19.04
 
 # apt-get install -y openssl net-tools git locales  vim curl wget cron whois elinks dnsutils netcat telnet subversion
@@ -38,37 +41,37 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
 
 ................................................................
 
-[root@www.schat.top:~ ]#  docker build  -t myubuntu:19.04 ./
+[root@schat.top:~ ]#  docker build  -t myubuntu:19.04 ./
 
 ................................................................
 
-[root@www.schat.top:~ ]#  docker images
+[root@schat.top:~ ]#  docker images
     REPOSITORY   TAG     IMAGE ID 
      myubuntu   19.04   beebb8c5d3e1 
  
 ................................................................
  
-[root@www.schat.top:~ ]#  vim /data/docker/www.schat.top/init.sh
+[root@schat.top:~ ]#  vim /data/docker/www.schat.top/init.sh
  #!/bin/bash
  
  [ -f /etc/init.d/nginx ] && sudo /etc/init.d/nginx start
  [ -f /etc/init.d/mysql ] && sudo /etc/init.d/mysql start
  [ -f /etc/init.d/php7.2-fpm ] && /etc/init.d/php7.2-fpm
  
-[root@www.schat.top:~ ]#  docker run -it -d --privileged --ip=172.18.0.100 \
+[root@schat.top:~ ]#  docker run -it -d --privileged --ip=172.18.0.100 \
  --net=dockernet -v "/data/docker/www.schat.top:/data" \
  -w /data -h schat.top --name schat.top --restart=always \
  myubuntu:19.04 /bin/bash
 
 ................................................................
  
-[root@www.schat.top:~ ]#  docker ps 
+[root@schat.top:~ ]#  docker ps 
 CONTAINER ID         IMAGE                COMMAND               STATUS        NAMES
 95285ee946b7  myubuntu:19.04     "/usr/local/bin/init…"    Up 4 minutes   schat.top
 
 ................................................................
 
-[root@www.schat.top:~ ]#  vim /usr/local/bin/dockerin 
+[root@schat.top:~ ]#  vim /usr/local/bin/dockerin 
 #!/bin/bash
 # Switch docker containers as select menu
 # Auther: schat <https://www.schat.top>
@@ -92,16 +95,15 @@ do
 done
 
 ................................................................
-[root@www.schat.top:~ ]#  chmod +x /usr/local/bin/dockerin
+[root@schat.top:~ ]#  chmod +x /usr/local/bin/dockerin
 
 ................................................................
 
-[root@www.schat.top:~ ]#  dockerin
+[root@schat.top:~ ]#  dockerin
 1) www.schat.top(172.18.0.100)  3) php(172.18.0.11)
 2) mysql(172.18.0.20)
 
 #? 1
 
-[root@www.schat.top:~ ]#  /etc/init.d/cron status
+[root@schat.top:~ ]#  /etc/init.d/cron status
    * cron is running
-
