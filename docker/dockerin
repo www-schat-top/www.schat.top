@@ -1,0 +1,36 @@
+[root@www.schat.top:~ ]#  vim /usr/local/bin/dockerin 
+#!/bin/bash
+# Auther: schat <https://www.schat.top>
+
+cat > /tmp/dockergetip <<'_EOF_'
+#!/bin/bash
+function getip(){
+   name=${1/:/}
+   /usr/bin/docker inspect $name|grep '"IPAddress": "[0-9]\+.*"'|head -n1|awk '{print $2}'|sed -e 's/"//g' -e 's/,//g'|xargs -I {} echo "$name({})"
+}
+
+getip $1
+_EOF_
+
+chmod +x /tmp/dockergetip
+
+select c  in $( docker ps |awk 'NR>1 {print $NF}'|xargs -I {} /tmp/dockergetip {})
+do
+  name=$(echo $c|sed -e 's/(.*)//g' -e 's/://g')
+  docker exec -it $name bash
+done
+
+................................................................
+
+[root@www.schat.top:~ ]#  chmod +x /usr/local/bin/dockerin
+
+................................................................
+
+[root@www.schat.top:~ ]#  dockerin
+1) www.schat.top(172.18.0.100)  3) php(172.18.0.11)
+2) mysql(172.18.0.20)
+
+#? 1
+
+[root@www.schat.top:~ ]#  /etc/init.d/cron status
+   * cron is running
