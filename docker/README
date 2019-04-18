@@ -1,4 +1,4 @@
-Build my dockerfile and let docker run cron and init.sh at startup
+Build my dockerfile and let docker run services cron and init.sh at startup
 
 ....................................................................
 
