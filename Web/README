@@ -26,11 +26,12 @@
 
  [user@schat.top:~ ]$ mkdir /data/schat.top
 
- [user@schat.top:~ ]$ sudo ln -s /data/node10.11.0/bin/node /usr/local/bin/node
- [user@schat.top:~ ]$ sudo ln -s /data/node10.11.0/bin/node /usr/local/bin/nodejs
+ [user@schat.top:~ ]$ sudo ln -s /data/nnode11.14.0/bin/node /usr/local/bin/node
+ [user@schat.top:~ ]$ sudo ln -s /data/node11.14.0/bin/node /usr/local/bin/nodejs
  
  [user@schat.top:~ ]$ sudo vim /etc/profile
- export NODE_PATH=$NODE_PATH:/data/node10.11.0/lib/node_modules:/data/schat.top/node_modules
+ export NODE_PATH=$NODE_PATH:/data/node11.14.0/lib/node_modules:/data/schat.top/node_modules
+ export PATH=$PATH:/data/node11.14.0/bin
  
  [user@schat.top:~ ]$ . /etc/profile
 
@@ -38,12 +39,8 @@
 [user@schat.top:~ ]$ cd /data/schat.top
 [user@schat.top:~ ]$ npm init
 
-[user@schat.top:~ ]$ npm install socket.io cors md5 http unirest express mime-types imagemagick fluent-ffmpeg
-[user@schat.top:~ ]$ npm install body-parser querystring connect-busboy child_process
-[user@schat.top:~ ]$ npm install ip binary-search glob fs printf path child_process compression
-[user@schat.top:~ ]$ npm install html-minifier -g
-[user@schat.top:~ ]$ npm install html-minifier
-[user@schat.top:~ ]$ npm install --unsafe-perm=true --allow-root --save gyp node-gyp better-sqlite3  sharp
+[user@schat.top:~ ]$ npm install --unsafe-perm=true --allow-root --save socket.io cors md5 http unirest express mime-types imagemagick fluent-ffmpeg body-parser querystring connect-busboy child_process ip binary-search glob fs printf path child_process compression html-minifier -g html-minifier  gyp node-gyp better-sqlite3  sharp
+[user@schat.top:~ ]$ 
 
 .update
 [user@schat.top:~ ]$ npm update --unsafe-perm=true --allow-root 
