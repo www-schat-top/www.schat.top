@@ -40,7 +40,7 @@
 [user@schat.top:~ ]$ npm init
 
 [user@schat.top:~ ]$ npm install --unsafe-perm=true --allow-root --save socket.io cors md5 http unirest express mime-types imagemagick fluent-ffmpeg body-parser querystring connect-busboy child_process ip binary-search glob fs printf path child_process compression html-minifier -g html-minifier  gyp node-gyp better-sqlite3  sharp
-[user@schat.top:~ ]$ 
+[user@schat.top:~ ]$ npm audit fix
 
 .update
 [user@schat.top:~ ]$ npm update --unsafe-perm=true --allow-root 
