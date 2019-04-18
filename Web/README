@@ -83,4 +83,4 @@ b) HTML语法优化
 
 c) HTML压缩
  [user@schat.top:~ ]$ npm -g i html-minify
- [user@schat.top:~ ]$ /data/node10.11.0/bin/htmlminify index.nc.html > index.htmlroot@schat2019:/data/schat.top/ziliao
+ [user@schat.top:~ ]$ /data/node10.11.0/bin/htmlminify index.nc.html > index.html
