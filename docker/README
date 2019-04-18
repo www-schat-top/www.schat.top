@@ -105,5 +105,5 @@ done
 
 #? 1
 
-[root@schat.top:~ ]#  /etc/init.d/cron status
+[root@www.schat.top:~ ]#  /etc/init.d/cron status
    * cron is running
