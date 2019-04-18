@@ -1,13 +1,21 @@
 
 
 1)Create Server
-[root@schat.top:~ ]# mkdir -p /data/docker/schat.top/
-[root@schat.top:~ ]# vim /data/docker/schat.top/init.sh
+[root@master:~ ]# mkdir -p /data/docker/schat.top/
+[root@master:~ ]# vim /data/docker/schat.top/init.sh
 [ -f /data/schat.top/tools/chat.sh ] && /data/schat.top/tools/chat.sh start
   
-[root@schat.top:~ ]# docker run -it -d --ip=172.18.0.100 --net=dockernet -v /data/docker/schat.top:/data -w /data -h schat --name schat --restart=always myubuntu:19.04 /bin/bash
+[root@master:~ ]# docker run -it -d --ip=172.18.0.100 --net=dockernet -v /data/docker/schat.top:/data -w /data -h schat --name schat --restart=always myubuntu:19.04 /bin/bash
 
-2)Update
+2) Login in container
+
+[root@master:~ ]# /usr/local/bin/bin/dockerin
+1) schat2019(172.18.0.100)
+2) cnsphp(172.18.0.11)
+#? 1
+[root@schat.top:~ ]# 
+
+3) Run in container
 [root@schat.top:~ ]# useradd -s /bin/bash -d /home/user user
 [root@schat.top:~ ]# mkdir /home/user
 [root@schat.top:~ ]# chown -R user:user /home/user
@@ -21,7 +29,7 @@
 #must use sudo or will be error 
 [user@schat.top:~ ]# sudo apt -y install --fix-missing libmagickcore-dev libmagickwand-dev libmagic-dev
 
-3)
+4)
  [user@schat.top:~ ]$ cd /data 
 
  [user@schat.top:~ ]$ mkdir /data/schat.top
@@ -35,7 +43,7 @@
  
  [user@schat.top:~ ]$ . /etc/profile
 
-4)
+5)
 [user@schat.top:~ ]$ cd /data/schat.top
 [user@schat.top:~ ]$ npm init
 
@@ -46,7 +54,7 @@
 .update
 [user@schat.top:~ ]$ npm update --unsafe-perm=true --allow-root 
 
-5)
+6)
 [user@schat.top:~ ]$ crontab -l
 * * * * * /usr/bin/nc -n -zv 127.0.0.1 4200 || /data/schat.top/tools/chat.sh start
 
