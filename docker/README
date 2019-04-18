@@ -1,5 +1,20 @@
-Build my dockerfile and let docker run services cron and init.sh at startup
+.install docker
+....................................................................
+[root@www.schat.top:~ ]# apt-get -y update
+[root@www.schat.top:~ ]# apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual 
+[root@www.schat.top:~ ]# apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+[root@www.schat.top:~ ]# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+[root@www.schat.top:~ ]# apt-key fingerprint 0EBFCD88
+[root@www.schat.top:~ ]# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
+[root@www.schat.top:~ ]# apt-get -y update
+[root@www.schat.top:~ ]# apt-get -y install docker-ce  --allow-unauthenticated
 
+[root@www.schat.top:~ ]# docker network create --subnet 172.18.0.0/24 dockernet
+
+....................................................................
+....................................................................
+
+.Build my dockerfile and let docker run services cron and init.sh at startup
 ....................................................................
 
 [root@www.schat.top:~ ]# mkdir -p /data/docker/images/myubuntu19.04
@@ -38,13 +53,12 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
  
  [ -f /etc/init.d/nginx ] && sudo /etc/init.d/nginx start
  [ -f /etc/init.d/mysql ] && sudo /etc/init.d/mysql start
- php=$(ls -l /etc/init.d/php*fpm);
- if [ -f "$php" ]
- then
-    sudo "$php" start
- fi 
+ [ -f /etc/init.d/php7.2-fpm ] && /etc/init.d/php7.2-fpm
  
-[root@www.schat.top:~ ]#  docker run -it -d --privileged --ip=172.18.0.100 --net=dockernet -v "/data/docker/www.schat.top:/data" -w /data -h schat.top --name schat.top --restart=always myubuntu:19.04 /bin/bash
+[root@www.schat.top:~ ]#  docker run -it -d --privileged --ip=172.18.0.100 \
+ --net=dockernet -v "/data/docker/www.schat.top:/data" \
+ -w /data -h schat.top --name schat.top --restart=always \
+ myubuntu:19.04 /bin/bash
 
 ................................................................
  
