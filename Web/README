@@ -1,6 +1,6 @@
 
 
-1)Create Server
+1)In master Create Docker Container
 [root@master:~ ]# mkdir -p /data/docker/schat.top/
 [root@master:~ ]# vim /data/docker/schat.top/init.sh
 [ -f /data/schat.top/tools/chat.sh ] && /data/schat.top/tools/chat.sh start
