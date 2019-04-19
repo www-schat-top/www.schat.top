@@ -1,0 +1,16 @@
+.install
+docker run -it -d --privileged --net=dockernet --ip=172.18.0.99 -p 127.0.0.1:8443:8443 \
+-v "/data/docker/code-server:/data" -w /data -h cs --name cs codercom/code-server \
+--allow-http --no-auth
+
+.
+http://172.18.0.99:8443
+http://172.18.0.yourip:8443
+
+.vim /etc/fstab
+/dev/mapper/cloud--vg-root /   ext4  noatime,nodiratime,errors=remount-ro 0 1
+/dev/sdb1       /data          ext4  defaults,noatime,nodiratime 0 0
+
+.jdk12.0.1
+
+.
