@@ -1,0 +1,33 @@
+.download jdk12.0.1
+ https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html
+
+.vim /etc/profile
+export JAVA_HOME=/data/bin/jdk-12
+export JDK_16=$JAVA_HOME
+export JDK_17=$JAVA_HOME
+export JDK_18=$JAVA_HOME
+export JDK_19=$JAVA_HOME
+export JDK_9=$JAVA_HOME
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:/data/bin/node11.14.0/bin:/data/bin/go/bin
+
+echo $PATH | grep 'kotlin/current/bin'|grep -v grep 
+if [ $? -ne 0 ]
+then
+   export PATH=$PATH:/home/user/.sdkman/candidates/kotlin/current/bin
+fi
+
+
+$ sudo apt install unzip zip
+$ curl -s https://get.sdkman.io | bash
+$ source "/home/user/.sdkman/bin/sdkman-init.sh"
+$ sdk install kotlin
+$ which kotlinc
+  /home/user/.sdkman/candidates/kotlin/current/bin/kotlinc
+
+$ kotlinc a.kt
+  AKt.class  META-INF  a.kt
+
+$ kotlin AKt
+  19/04/19 09:41:28
