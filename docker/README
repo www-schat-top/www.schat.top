@@ -117,3 +117,11 @@ done
 
 [root@www.schat.top:~ ]#  /etc/init.d/cron status
    * cron is running
+
+
+[root@master:~ ]#  watch -n 8 'docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.BlockIO}}"'
+NAME                CPU %               MEM USAGE / LIMIT     BLOCK I/O
+code-server         190.56%             922.4MiB / 1.453GiB   60.9GB / 376MB
+schat2019           0.00%               10.38MiB / 1.453GiB   3.63GB / 6.37MB
+cnsphp              0.00%               0B / 1.453GiB         5.92MB / 0B
+
