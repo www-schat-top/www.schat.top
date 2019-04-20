@@ -1,0 +1,37 @@
+.update
+[root@schat.top ~]# apt update
+[root@schat.top ~]# apt upgrade
+
+.install a package
+[root@schat.top ~]# apt install lsof
+
+.install a package with yes
+[root@schat.top ~]# apt -y install lsof
+
+.remove a package
+[root@schat.top ~]# apt remove lsof
+
+.search packages
+[root@schat.top ~]# apt-cache search lsof
+
+.show the infomation of a package
+[root@schat.top ~]# apt-cache show lsof
+
+.show the depends
+[root@schat.top ~]# apt-cache depends xxd
+xxd
+  Depends: libc6
+  Breaks: vim-common
+  Replaces: vim-common
+
+.add the cdrom source
+[root@schat.top ~]# apt-cdrom add
+
+.clean
+[root@schat.top ~]# apt-get autoclean
+[root@schat.top ~]# apt-get clean
+[root@schat.top ~]# apt-get autoremove
+
+.purge
+[root@schat.top ~]# apt-get --purge remove xxxxx
+
