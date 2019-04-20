@@ -1,4 +1,4 @@
-package T
+package my
 import "fmt"
 
 func P(s string) {
