@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-   my.Pln("sssss\n")
+   my.Pln("sssss")
    my.Pln(my.U("sssss"))
 }
