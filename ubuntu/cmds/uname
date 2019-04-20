@@ -1,0 +1,35 @@
+.print all information
+[root@schat.top ~]# uname -a
+Linux roots 4.15.0-43-generic #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+.print the kernel name
+[root@schat.top ~]# uname -s
+Linux
+
+.print the node hostname
+[root@schat.top ~]# uname -n
+schat
+
+.print the kernel release
+[root@schat.top ~]# uname -r
+4.15.0-43-generic
+
+.print the kernel version
+[root@schat.top ~]# uname -v
+#46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+
+.print the machine hardware name
+[root@schat.top ~]# uname -m
+x86_64
+
+.print the processor type or unknown
+[root@schat.top ~]# uname -p
+x86_64
+
+.print the hardware platform or unknown
+[root@schat.top ~]# uname -i
+x86_64
+
+.print the operatng system
+[root@schat.top ~]# uname -o
+GNU/Linux
