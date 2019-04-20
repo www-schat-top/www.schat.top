@@ -1,10 +1,10 @@
 package main
 
 import (  
-	"./T"
+	"./my"
 )
 
 func main() {
-   T.P("sssss")
-   T.P(T.Max(10,12))
+   my.Pln("sssss\n")
+   my.Pln(my.U("sssss"))
 }
