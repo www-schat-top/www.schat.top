@@ -1,8 +1,10 @@
-package T
+package my
  
-func Max(x int, y int) {
-    if(x>y)
-     return x
-    else
-     return y
+func Max(x int, y int) int {
+    var rtv int
+    rtv = x
+    if(x<y) {
+      rtv = y
+    }
+    return rtv
 }
