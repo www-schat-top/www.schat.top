@@ -1,0 +1,41 @@
+list the installed packages
+[root@schat.top ~]# dpkg -l  
+ii  acl   
+ii  acpid  
+
+.show the installed pathes of a package
+[root@schat.top ~]# dpkg -L xxd
+/usr/bin/xxd
+/usr/share/doc/xxd
+/usr/share/doc/xxd/NEWS.Debian.gz
+
+.install a package
+[root@schat.top ~]# dpkg -i xxx.deb
+
+.remove the already installed package,but keep the configuration
+[root@schat.top ~]# dpkg -r xxx.deb
+
+.remove a package and configuration
+[root@schat.top ~]# dpkg -p xxx.deb
+
+.show the contents of a package
+[root@schat.top ~]# dpkg --contents xxx.deb
+./usr/bin/xxd
+./usr/share/doc/xxd
+./usr/share/doc/xxd/NEWS.Debian.gz
+
+.unpack a package
+[root@schat.top ~]# dpkg --unpack xxx.deb
+
+.check a package is installed or not
+[root@schat.top ~]# dpkg -s xxx.deb
+
+.purge a package using dpkg
+[root@schat.top ~]# dpkg -P xxx.deb
+
+.install all packages from a directory
+[root@schat.top ~]# dpkg -R --install /path/
+
+
+
+
