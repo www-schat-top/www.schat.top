@@ -1,0 +1,33 @@
+.security
+ 1) ufw allow 22/tcp
+    ufw enable
+    
+ 2) apt-get install --reinstall rsyslog
+    
+ 3) apt -y install fail2ban 
+    update-rc.d fail2ban enable
+    /etc/init.d/fail2ban start
+    
+ 4) 
+[root@schat.top:~]# tail /var/log/fail2ban.log
+2019-04-20 15:43:02,585 fail2ban.actions: WARNING [ssh] Ban 103.17.55.200
+2019-04-20 15:43:02,603 fail2ban.actions: WARNING [ssh] Ban 159.89.165.141
+2019-04-20 15:43:02,621 fail2ban.actions: WARNING [ssh] Ban 139.59.143.213
+
+[root@schat.top:~]# fail2ban-client status
+Status
+|- Number of jail:	1
+`- Jail list:		ssh
+
+[root@schat.top:~]# fail2ban-client status ssh
+Status for the jail: ssh
+|- filter
+|  |- File list:	/var/log/auth.log 
+|  |- Currently failed:	7
+|  `- Total failed:	42
+`- action
+   |- Currently banned:	3
+   |  `- IP list:	103.17.55.200 159.89.165.141 139.59.143.213 
+   `- Total banned:	3
+
+    
