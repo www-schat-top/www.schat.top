@@ -1,0 +1,2 @@
+.backup / to /media/disk1
+rsync -Pa / /media/disk1 --exclude=/media/* --exclude=/proc/* --exclude=/mnt/*
