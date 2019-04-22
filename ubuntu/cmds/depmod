@@ -1,0 +1,37 @@
+depmod - program to generate modules.dep and map files.
+
+Synopsis
+   depmod [ -b basedir ] [ -e ] [ -F System.map ] [ -n ] [ -v ] [ version ] [ -A ]
+   depmod [ -e ] [ -FSystem.map ] [ -n ] [ -v ] [ version ] [ filename... ]
+
+Description
+   Linux kernel modules can provide services (called "symbols") for other modules to use (using EXPORT_SYMBOL in the code). If a second module uses this symbol, that second module clearly depends on the first module. These dependencies can get quite complex.
+depmod creates a list of module dependencies by reading each module under /lib/modules/version and determining what symbols it exports and what symbols it needs. By default, this list is written to modules.dep in the same directory. If filenames are given on the command line, only those modules are examined (which is rarely useful unless all modules are listed).
+
+   If a version is provided, then that kernel version's module directory is used rather than the current kernel version (as returned by uname -r).
+depmod will also generate various map files in this directory for use by the hotplug infrastructure.
+
+Options
+  -a --all
+      Probe all modules. This option is enabled by default if no file names are given in the command-line.
+-A --quick
+      This option scans to see if any modules are newer than the modules.dep file before any work is done: if not, it silently exits rather than regenerating the files.
+-b basedir --basedir basedir
+      If your modules are not currently in the (normal) directory /lib/modules/version, but in a staging area, you can specify a basedir which is prepended to the directory name. This basedir is stripped from the resulting modules.dep file, so it is ready to be moved into the normal location.
+-C --config file or directory
+      This option overrides the default configuration file at /etc/depmod.conf (or the /etc/depmod.d/ directory if that is not found).
+-e --errsyms
+      When combined with the -F option, this reports any symbols which a module needs which are not supplied by other modules or the kernel. Normally, any symbols not provided by modules are assumed to be provided by the kernel (which should be true in a perfect world).
+-F --filesyms System.map
+      Supplied with the System.map produced when the kernel was built, this allows the -e option to report unresolved symbols.
+-h --help
+      Print the help message and exit.
+-n --dry-run
+       This sends the resulting modules.dep and the various map files to standard output rather than writing them into the module directory.
+-v --verbose
+       In verbose mode, depmod will print (to stdout) all the symbols each module depends on and the module's file name which provides that symbol.
+-V --version
+      Show version of program and exit. See below for caveats when run on older kernels.
+
+Copyright
+      This manual page Copyright 2002, Rusty Russell, IBM Corporation.
