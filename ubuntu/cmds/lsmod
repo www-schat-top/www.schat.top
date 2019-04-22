@@ -1,0 +1,98 @@
+[root@schat.top ~]# lsmod
+Module                  Size  Used by
+nf_log_ipv6            16384  5 
+nf_log_ipv4            16384  5 
+nf_log_common          16384  2 nf_log_ipv4,nf_log_ipv6
+xt_LOG                 16384  10 
+xt_multiport           16384  1 
+xt_recent              20480  0 
+btrfs                 966656  0 
+xor                    24576  1 btrfs
+raid6_pq              102400  1 btrfs
+ufs                    73728  0 
+qnx4                   16384  0 
+hfsplus               102400  0 
+hfs                    57344  0 
+minix                  36864  0 
+ntfs                   98304  0 
+msdos                  20480  0 
+jfs                   180224  0 
+xfs                   958464  0 
+libcrc32c              16384  1 xfs
+cpuid                  16384  0 
+xt_nat                 16384  26 
+veth                   16384  0 
+ipt_MASQUERADE         16384  4 
+nf_nat_masquerade_ipv4    16384  1 ipt_MASQUERADE
+nf_conntrack_netlink    36864  0 
+nfnetlink              16384  2 nf_conntrack_netlink
+xfrm_user              32768  1 
+xfrm_algo              16384  1 xfrm_user
+iptable_nat            16384  7 
+nf_nat_ipv4            16384  1 iptable_nat
+br_netfilter           24576  0 
+bridge                126976  1 br_netfilter
+stp                    16384  1 bridge
+llc                    16384  2 stp,bridge
+aufs                  212992  339 
+autofs4                40960  0 
+ip6t_REJECT            16384  2 
+nf_reject_ipv6         16384  1 ip6t_REJECT
+xt_hl                  16384  28 
+ip6t_rt                16384  6 
+nf_conntrack_ipv6      20480  15 
+nf_defrag_ipv6         36864  1 nf_conntrack_ipv6
+ipt_REJECT             16384  9 
+nf_reject_ipv4         16384  1 ipt_REJECT
+xt_limit               16384  14 
+xt_tcpudp              16384  80 
+xt_addrtype            16384  10 
+nf_conntrack_ipv4      16384  18 
+nf_defrag_ipv4         16384  1 nf_conntrack_ipv4
+xt_conntrack           16384  32 
+ip6table_filter        16384  2 
+ip6_tables             28672  70 ip6table_filter
+nf_conntrack_netbios_ns    16384  0 
+nf_conntrack_broadcast    16384  1 nf_conntrack_netbios_ns
+nf_nat_ftp             16384  0 
+nf_nat                 24576  4 nf_nat_ftp,nf_nat_ipv4,xt_nat,nf_nat_masquerade_ipv4
+nf_conntrack_ftp       24576  1 nf_nat_ftp
+nf_conntrack          106496  11 nf_nat_ftp,nf_conntrack_netbios_ns,nf_nat,nf_nat_ipv4,xt_conntrack,nf_nat_masquerade_ipv4,nf_conntrack_netlink,nf_conntrack_broadcast,nf_conntrack_ftp,nf_conntrack_ipv4,nf_conntrack_ipv6
+iptable_filter         16384  2 
+ip_tables              24576  20 iptable_filter,iptable_nat
+x_tables               36864  17 ip6table_filter,xt_hl,xt_recent,ip_tables,xt_tcpudp,ipt_MASQUERADE,xt_limit,xt_conntrack,xt_LOG,xt_nat,xt_multiport,iptable_filter,ip6t_rt,ipt_REJECT,ip6_tables,xt_addrtype,ip6t_REJECT
+joydev                 20480  0 
+hid_generic            16384  0 
+crct10dif_pclmul       16384  0 
+crc32_pclmul           16384  0 
+ghash_clmulni_intel    16384  0 
+aesni_intel           167936  0 
+aes_x86_64             20480  1 aesni_intel
+input_leds             16384  0 
+lrw                    16384  1 aesni_intel
+gf128mul               16384  1 lrw
+glue_helper            16384  1 aesni_intel
+ablk_helper            16384  1 aesni_intel
+serio_raw              16384  0 
+cryptd                 20480  3 ghash_clmulni_intel,aesni_intel,ablk_helper
+hid_hyperv             16384  0 
+hid                   118784  2 hid_hyperv,hid_generic
+lp                     20480  0 
+mac_hid                16384  0 
+hyperv_fb              20480  1 
+hv_balloon             24576  0 
+hyperv_keyboard        16384  0 
+parport                49152  1 lp
+i2c_piix4              24576  0 
+8250_fintek            16384  0 
+hv_storvsc             20480  3 
+hv_utils               28672  0 
+ptp                    20480  1 hv_utils
+scsi_transport_fc      65536  1 hv_storvsc
+hv_netvsc              40960  0 
+pps_core               20480  1 ptp
+psmouse               131072  0 
+hv_vmbus               90112  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+pata_acpi              16384  0 
+floppy                 73728  0 
+fjes                   28672  0 
