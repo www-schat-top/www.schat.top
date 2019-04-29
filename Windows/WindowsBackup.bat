@@ -20,4 +20,4 @@
   forfiles  /p d:\backup  /m *.7z  /d -20 /c "cmd /c del @file"
 
 ::Ftp Update
-D:\\backup\\curl\\curl.exe -u user:passwd  --ftp-create-dirs -T  "d:\\backup\\%d%\\1.210.7z"  ftp://8.8.8.8:21/%d%/ 
+D:\\backup\\curl\\curl.exe -u user:passwd  --ftp-create-dirs -T  "d:\\backup\\%d%\\myserver007.7z"  ftp://8.8.8.8:21/%d%/ 
