@@ -1,0 +1,35 @@
+.Install
+[root@schat.top ~]# apt update
+[root@schat.top ~]# apt upgrade
+[root@schat.top ~]# apt install nginx-extras lua5.3 lua5.3-dev
+[root@schat.top ~]# apt install php7.2-curl php7.2-imap php7.2-odbc \
+                                php7.2-snmp php7.2-xsl php7.2 php7.2-opcache \
+                                php7.2-zip php7.2-bcmath php7.2-intl \
+                                php7.2-pgsql php7.2-sqlite3 php7cc \
+                                php7.2-bz2 php7.2-enchant php7.2-json \
+                                php7.2-phpdbg php7.2-cgi php7.2-fpm \
+                                php7.2-cli php7.2-gd php7.2-mbstring \
+                                php7.2-readline php7.2-xml php7.2-common \
+                                php7.2-gmp php7.2-mysql
+                                
+.[root@schat.top ~]# vim /etc/nginx/sites-enabled/default
+server {
+	listen 80 default_server;
+	root /var/www/html;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	location / {
+      default_type 'text/plain';
+      content_by_lua_block {
+             ngx.say('Hello,world!')
+      }
+	}
+
+	location ~ \.php$ {
+		  include snippets/fastcgi-php.conf;
+		  fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	}
+}
