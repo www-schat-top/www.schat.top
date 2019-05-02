@@ -1,7 +1,7 @@
 <?php
 /**
- * From: https://schat.top
- * Usage:
+ * @From: https://schat.top
+ * @Usage:
     1)get
       $rtv = Curl::go("https://schat.top");
       $rtv = Curl::go(["url"=>"https://schat.top"]);
@@ -32,6 +32,55 @@
           $_FILES['file']['tmp_name'] => /tmp/phpW75BcK
           $_FILES['file']['error']    => 0
           $_FILES['file']['size']     => 6645
+	  
+  @return 
+   [
+    "errno"   => 0,
+    "error"   => "",
+    "code"    => 200,
+    "url"     => "http://schat.top/a.php",
+    "ip"      =>  "127.0.0.1",
+    
+    "header"  => "
+        HTTP/1.1 200 OK
+        Server: nginx/1.14.0 (Ubuntu)
+        Date: Thu, 02 May 2019 05:57:31 GMT
+        Content-Type: text/html; charset=UTF-8
+        Transfer-Encoding: chunked
+        Connection: keep-alive
+        Vary: Accept-Encoding
+        X-XSS-Protection: 1; mode=block
+        Access-Control-Allow-Origin: *
+        X-Frame-Options: SAMEORIGIN
+        Content-Encoding: gzip
+    ",
+    
+    "body" => "
+        _POST [ "user" => "john",  "age" => 20 ]
+        _GET []
+        _FILES["file"][ "name" => "2.tar.gz", "type" => "application/octet-stream", 
+	            "tmp_name" => "/tmp/phplr55Il",  "error" => 0, "size" => 6645 
+             ]
+    ",
+    
+    "info" => [
+      "url"           => "http://schat.top/a.php",
+      "content_type"  => "text/html; charset=UTF-8",
+      "http_code"     => 200,
+      "header_size"   => 345,
+      "primary_ip"    => "127.0.0.1",
+      "primary_port"  => 80,
+      "local_ip"      => "127.0.0.1",
+      "local_port"    => 51082,
+      "total_time"      => 0.004927,
+      "namelookup_time" => 0.004158,
+      "connect_time"    => 0.004292,
+      "speed_download"  => 43500,
+      "speed_upload"    => 1760250,
+      "redirect_time"   => 0,
+      "redirect_url"    => 0,
+    ]
+  ]
 */
 
 class Curl {
@@ -107,76 +156,3 @@ class Curl {
       ];
    }
 } //~
-
-$rtv = Curl::go([
-   "url"=>"http://schat.top/a.php", 
-   "data"=>[
-      "user"=>"john",
-      "age"=>20,
-      "file"=>new CURLFile("/tmp/2.tar.gz")
-   ]
-]);
-
-var_dump($rtv);
-
-/*
-  [
-    "errno"   => 0,
-    "error"   => "",
-    "code"    => 200,
-    "url"     => "http://schat.top/a.php",
-    "ip"      =>  "127.0.0.1",
-    
-    "header"  => "
-        HTTP/1.1 200 OK
-        Server: nginx/1.14.0 (Ubuntu)
-        Date: Thu, 02 May 2019 05:57:31 GMT
-        Content-Type: text/html; charset=UTF-8
-        Transfer-Encoding: chunked
-        Connection: keep-alive
-        Vary: Accept-Encoding
-        X-XSS-Protection: 1; mode=block
-        Access-Control-Allow-Origin: *
-        X-Frame-Options: SAMEORIGIN
-        Content-Encoding: gzip
-    ",
-    
-    "body" => "
-        _POST [
-            "user" => "john",
-            "age" => 20
-        ]
-
-        _GET []
-
-        _FILES["file"][
-                    "name" => "2.tar.gz",
-                    "type" => "application/octet-stream",
-                    "tmp_name" => "/tmp/phplr55Il",
-                    "error" => 0,
-                    "size" => 6645
-       ]
-    ",
-    
-    "info" => [
-      "url"           => "http://schat.top/a.php",
-      "content_type"  => "text/html; charset=UTF-8",
-      "http_code"     => 200,
-      "header_size"   => 345,
-      "primary_ip"    => "127.0.0.1",
-      "primary_port"  => 80,
-      "local_ip"      => "127.0.0.1",
-      "local_port"    => 51082,
-
-      "total_time"      => 0.004927,
-      "namelookup_time" => 0.004158,
-      "connect_time"    => 0.004292,
-
-      "speed_download"  => 43500,
-      "speed_upload"    => 1760250,
-
-      "redirect_time"   => 0,
-      "redirect_url"    => 0,
-    ]
-  ]
-*/
