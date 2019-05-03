@@ -1,0 +1,11 @@
+#50~100 requests per minute, more than 100 will return 503
+http {
+   ...
+   limit_req_zone $binary_remote_addr zone=ConnLimit:5m rate=50r/s;
+   limit_req zone=ConnLimit burst=150 nodelay;
+   ...
+
+   server {
+      ....
+   }
+}
