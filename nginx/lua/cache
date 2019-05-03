@@ -1,0 +1,76 @@
+1) vim /etc/nginx/nginx.conf
+http {
+    ...
+    proxy_cache_path  /tmp/cache levels=1:2 keys_zone=tmpcache:10m inactive=1d max_size=500m;   
+    ...
+}
+
+2) vim /etc/nginx/mycache.conf 
+           #cache
+           proxy_cache tmpcache;
+           proxy_cache_valid 200 301 10d;
+           proxy_cache_valid any 1d;
+           proxy_cache_key $uri$is_args$args;
+           add_header X-Via $server_addr;
+           add_header X-Cache $upstream_cache_status;
+
+           location ~* /purge(/.*) {
+              allow 127.0.0.1;
+              allow 192.168.0.0/24
+              deny all;
+            
+              proxy_cache_purge tmpcache $1$is_args$args;
+           }
+           #~cache 
+           
+3) vim /etc/nginx/sites-enabled/a.com
+upstream upxxxx {
+     ...
+}
+
+server {
+   server_name a.com www.a.com; 
+   listen 80; 
+   location / {
+      include injection.conf;
+      access_by_lua_file /etc/nginx/lua/nginx_access.lua;
+
+      include /etc/nginx/mycache.conf;
+
+      if ( $request_uri ~* \.(?:jpg|jpeg|gif|png|ico|js|css|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ ) 
+      {
+          expires 30d;
+          access_log off;
+          add_header Cache-Control "public";
+
+          #include "/etc/nginx/cache.conf";
+          #proxy_cache_bypass $cookie_nocache $arg_nocache;
+      }
+
+      proxy_set_header Host $host;
+
+      add_header gzip_ratio "gzip_ratio";
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+      proxy_http_version 1.1;
+      proxy_ignore_client_abort on;
+
+      proxy_pass http://upxxxx;
+   }
+}
+
+4) [root@schat.top ~]# curl https://a.com/index.html
+
+5) [root@schat.top ~]# curl https://a.com/purge/index.html
+<html>
+<head>
+  <title>Successful purge</title>
+</head>
+<body>
+   <h1>Successful purge</h1>
+   <br>Key : /index.html
+   <br>Path: /tmp/cache/b/82/d1546d731a9f30cc80127d57142a482b  
+</body>
+</html>
+
