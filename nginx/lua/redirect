@@ -1,0 +1,23 @@
+.ngx.exec内部的重定向，不会返回给客户端 
+ 1)
+    rewrite regrex replacement last;
+
+ 2)
+  content_by_lua_block {
+      return ngx.exec('/foo');
+      return ngx.exec('/foon', 'a=3&b=5&c=6');
+      return ngx.exec('/foo?a=3&b=5', 'c=6');
+      return ngx.exec("/foo",{ a= 3, b="hello world"});
+  }
+    
+.ngx.redirect(uri, status?) 给客户端返回一个301/302重定向(如果不指定status值，默认是返回302 (ngx.HTTP_MOVED_TEMPORARILY)
+    rewrite ^ /foo? permanent;  
+    rewrite ^ /foo? redirect; 
+    
+.ngx.req.set_uri(uri, jump?) 重写uri
+    参数jump为true跳转uri，为false不跳 
+    ngx.req.set_uri("/foo", true)  等价于 rewrite ^ /foo last; 
+    ngx.req.set_uri("/foo", false) 或 ngx.req.set_uri("/foo")  等价于 rewrite ^ /foo break;
+    
+    
+    
