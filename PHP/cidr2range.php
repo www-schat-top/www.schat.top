@@ -6,5 +6,5 @@
  */
 function cidr2range($cidr){
    list( $subnet, $mask ) = explode( '/', $cidr );
-   return [long2ip($subnet), long2ip(ip2long( $subnet ) | (pow(2,( 32 - $mask ))-1))];
+   return [ip2long($subnet), long2ip(ip2long( $subnet ) | (pow(2,( 32 - $mask ))-1))];
 }
