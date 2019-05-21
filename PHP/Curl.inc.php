@@ -1,6 +1,7 @@
 <?php
 /**
  * @From: https://schat.top
+ * @Link: https://www.php.net/manual/zh/book.curl.php
  * @Usage:
     1)get
       $rtv = Curl::go("https://schat.top");
